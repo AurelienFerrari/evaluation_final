@@ -41,7 +41,6 @@ Le projet utilise la stratégie GitFlow pour garantir une gestion claire et coll
   - `release/<version>` : préparation de release
   - `hotfix/<nom>` : corrections urgentes
 
-
 ### Schéma GitFlow (exemple)
 
 ```mermaid
