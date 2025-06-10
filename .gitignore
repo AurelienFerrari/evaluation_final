@@ -1,0 +1,16 @@
+# Node
+node_modules/
+.env
+*.log
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Ansible
+*.retry
+
+# Snapshots/Backups
+*.sql
+backup_*.sql

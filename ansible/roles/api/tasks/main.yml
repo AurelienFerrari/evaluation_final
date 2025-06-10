@@ -1,0 +1,30 @@
+---
+- name: Installer Node.js
+  apt:
+    name: nodejs
+    state: present
+    update_cache: yes
+
+- name: Installer npm
+  apt:
+    name: npm
+    state: present
+
+- name: Copier les fichiers de l'API
+  copy:
+    src: ../../../../appli/
+    dest: /opt/api/
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
+
+- name: Installer les dépendances npm
+  command: npm install
+  args:
+    chdir: /opt/api/
+
+- name: Démarrer l'API
+  command: npm start
+  args:
+    chdir: /opt/api/
+    creates: /opt/api/server.js
