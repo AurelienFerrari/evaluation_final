@@ -1,5 +1,11 @@
-variable "instance_name" {
-  description = "Nom de la VM ou ressource principale."
-  type        = string
-  default     = "vm-api-devops"
+variable "project" {
+  type = string
+}
+
+variable "region" {
+  type = string
+}
+
+variable "zone" {
+  type = string
 }
