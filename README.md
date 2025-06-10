@@ -16,6 +16,7 @@ Ce dépôt propose la mise en œuvre complète d’un pipeline CI/CD pour le dé
 
 ## Structure du dépôt
 
+
 ```
 appli/           # Code source de l’API
 terraform/       # Scripts Terraform (infra as code)
