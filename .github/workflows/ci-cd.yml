@@ -22,16 +22,15 @@ jobs:
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
       - name: Créer credentials.json pour GCP
-        env:
-          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
         run: |
-          echo "$GCP_SA_KEY" > ./terraform/credentials.json
+          mkdir -p terraform
+          echo ${{ secrets.GCP_SA_KEY }} > terraform/credentials.json
 
       - name: Terraform init
-        working-directory: ./terraform
+        working-directory: terraform
         run: terraform init
       - name: Terraform apply
-        working-directory: ./terraform
+        working-directory: terraform
         run: terraform apply -auto-approve
   test:
     runs-on: ubuntu-latest
