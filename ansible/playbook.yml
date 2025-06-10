@@ -1,0 +1,7 @@
+---
+- name: Exemple de playbook Ansible
+  hosts: all
+  tasks:
+    - name: Afficher un message
+      debug:
+        msg: "Playbook Ansible opérationnel !"

@@ -31,9 +31,46 @@ README.md        # Documentation complète
 
 ## GitFlow
 
-- Branches principales : `main`, `develop`
-- Branches secondaires : `feature/*`, `release/*`, `hotfix/*`
-- Voir `/gitflow/` pour schéma et captures d’écran.
+Le projet utilise la stratégie GitFlow pour garantir une gestion claire et collaborative du code :
+
+- **Branches principales** :
+  - `main` : production
+  - `develop` : intégration continue
+- **Branches secondaires** :
+  - `feature/<nom>` : développement de fonctionnalités
+  - `release/<version>` : préparation de release
+  - `hotfix/<nom>` : corrections urgentes
+
+### Schéma GitFlow (exemple)
+
+```mermaid
+flowchart LR
+    A[main] --- B[develop]
+    B --> C1[feature/ma-fonctionnalite]
+    B --> C2[feature/...] 
+    B --> D[release/x.y.z]
+    A --> E[hotfix/urgent]
+    D --> A
+    E --> A
+    C1 --> B
+    C2 --> B
+```
+main ──────┬───────────────┐
+           │               │
+       [merge]         [merge]
+           │               │
+develop ─────┬─────────────┼─────┬─────────────┐
+             │             │     │             │
+     feature/xxx   release/x.y.z │    hotfix/xxx
+             │             │     │             │
+         [merge]      [merge] [merge]      [merge]
+             │             │     │             │
+         develop         main  main         main
+```
+
+- Chaque fonctionnalité part de `develop` et y revient.
+- Les releases et hotfix fusionnent dans `main` (et `develop` si besoin).
+- Voir captures d'écran dans `/gitflow/` ou ci-dessous.
 
 ## CI/CD
 
@@ -58,5 +95,5 @@ README.md        # Documentation complète
 
 ---
 
-> **Auteur** : [Votre nom]
+> **Auteur** : [Aurélien Ferrari]
 > **Date** : Juin 2025
