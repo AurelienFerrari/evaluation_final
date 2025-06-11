@@ -24,7 +24,7 @@ jobs:
         uses: hashicorp/setup-terraform@v3
       - name: Créer credentials.json pour GCP
         run: |
-          echo "${{ secrets.GCP_SA_KEY }}" | perl -pe 's/\\n/\n/g' > terraform/credentials.json
+          echo '${{ secrets.GCP_SA_KEY }}' > terraform/credentials.json
       - name: Vérifier le credentials.json
         run: jq . terraform/credentials.json
       - name: Générer terraform.tfvars
@@ -35,7 +35,7 @@ jobs:
           zone    = "${{ secrets.TF_VAR_zone }}"
           EOF
 
-          
+
       - name: Terraform init
         working-directory: ./terraform
         run: terraform init
