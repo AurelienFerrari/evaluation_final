@@ -23,7 +23,10 @@ jobs:
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
       - name: Créer credentials.json pour GCP
-        run: printf '%s' "${{ secrets.GCP_SA_KEY }}" > terraform/credentials.json
+        run: |
+          echo "${{ secrets.GCP_SA_KEY }}" > terraform/credentials.json
+      - name: Vérifier le credentials.json
+        run: jq . terraform/credentials.json
       - name: Générer terraform.tfvars
         run: |
           cat <<EOF > terraform/terraform.tfvars
